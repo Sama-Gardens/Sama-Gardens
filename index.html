@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sama Gardens | Sustainable Farming & Community Agriculture</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .modal {
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-emerald-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <img src="logo.png" alt="Sama Gardens Logo" class="w-12 h-12 object-contain group-hover:scale-105 transition-transform" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="hidden w-12 h-12 rounded-xl bg-emerald-600 text-white items-center justify-center text-xl shadow-md"><i class="fa-solid fa-seedling"></i></div>
+                <div class="flex flex-col">
+                    <span class="font-black text-xl tracking-tight text-stone-950 uppercase">Sama</span>
+                    <span class="text-xs font-bold text-emerald-600 tracking-widest uppercase -mt-1">Gardens</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm tracking-wide text-stone-600">
+                <a href="#home" class="hover:text-emerald-600 transition-colors">Home</a>
+                <a href="#about" class="hover:text-emerald-600 transition-colors">Our Roots</a>
+                <a href="#programs" class="hover:text-emerald-600 transition-colors">Farming Projects</a>
+                <a href="#volunteer" class="hover:text-emerald-600 transition-colors">Farm Volunteers</a>
+                <a href="#impact" class="hover:text-emerald-600 transition-colors">Harvest Stories</a>
+                <a href="#gallery" class="hover:text-emerald-600 transition-colors">The Farm</a>
+                <a href="#contact" class="hover:text-emerald-600 transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden md:block">
+                <button onclick="openDonateModal()" class="cursor-pointer bg-gradient-to-r align-middle from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white font-bold px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 text-sm uppercase tracking-wider">
+                    Support Our Harvest
+                </button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-stone-700 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 px-4 py-4 space-y-3 shadow-inner">
+            <a href="#home" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">Home</a>
+            <a href="#about" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">Our Roots</a>
+            <a href="#programs" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">Farming Projects</a>
+            <a href="#volunteer" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">Farm Volunteers</a>
+            <a href="#impact" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">Harvest Stories</a>
+            <a href="#gallery" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">The Farm</a>
+            <a href="#contact" class="block font-semibold text-stone-700 hover:text-emerald-600 transition-colors">Contact</a>
+            <button onclick="openDonateModal(); toggleMobileMenu();" class="w-full text-center bg-gradient-to-r from-emerald-600 to-green-700 text-white font-bold py-3 rounded-xl mt-2 block shadow-md">
+                Support Our Harvest
+            </button>
+        </div>
+    </header>
+
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center bg-stone-900 text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="IMG-20260220-WA0015.jpg" alt="Sama Gardens Agricultural Fields" class="w-full h-full object-cover object-center opacity-45">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-stone-950/40"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center py-20">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs uppercase tracking-widest mb-6 border border-emerald-500/30">
+                <i class="fa-solid fa-wheat-awn animate-pulse"></i> Sustainable Agriculture & Community Gardens
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none mb-6">
+                Cultivating Land.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-400 to-amber-300">Nourishing Communities.</span><br>Growing Self-Sufficiency.
+            </h1>
+            <p class="text-lg sm:text-xl text-stone-300 max-w-3xl mx-auto mb-10 font-medium leading-relaxed">
+                Sama Gardens empowers vulnerable families in Kenya through community-led organic farming, permaculture education, resilient crop systems, and interactive international eco-volunteer initiatives.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="openVolunteerModal()" class="cursor-pointer w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-stone-950 font-black px-8 py-4 rounded-full text-base uppercase tracking-wider shadow-xl transition-all transform hover:-translate-y-0.5">
+                    Join As Farm Volunteer
+                </button>
+                <button onclick="openDonateModal()" class="cursor-pointer w-full sm:w-auto border-2 border-white/80 hover:border-white bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-3.5 rounded-full text-base uppercase tracking-wider backdrop-blur-sm transition-all">
+                    Sponsor Seeds & Tools
+                </button>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center max-w-4xl mx-auto">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-black text-emerald-400">100%</h3>
+                    <p class="text-xs text-stone-400 font-bold uppercase tracking-wider mt-1">Organic & Eco-Friendly</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-black text-emerald-400">Permaculture</h3>
+                    <p class="text-xs text-stone-400 font-bold uppercase tracking-wider mt-1">Sustainable Framework</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-black text-emerald-400">Food Security</h3>
+                    <p class="text-xs text-stone-400 font-bold uppercase tracking-wider mt-1">Direct Local Supply</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-black text-emerald-400">Empowered</h3>
+                    <p class="text-xs text-stone-400 font-bold uppercase tracking-wider mt-1">Local Smallholders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest block mb-2">Our Roots</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">Sowing the Seeds of Food Security & Dignity</h2>
+                    </div>
+                    
+                    <div class="space-y-4 text-stone-600 leading-relaxed font-medium">
+                        <p>
+                            Sama Gardens was founded to address ecological degradation and food insecurity facing vulnerable households. We believe that true structural empowerment begins with the soil. By establishing community-managed gardens, we provide families with the tools, knowledge, and climate-resilient seeds required to feed themselves and thrive.
+                        </p>
+                        <p>
+                            By combining modern eco-farming practices with traditional, local agricultural knowledge, we run fields that yield nutrient-dense food while restoring local ecosystems and creating green income opportunities.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="p-5 rounded-2xl bg-stone-50 border border-stone-100 shadow-sm">
+                            <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white text-lg font-bold mb-3"><i class="fa-solid fa-sprout"></i></div>
+                            <h4 class="font-bold text-stone-950 text-base mb-1">Our Mission</h4>
+                            <p class="text-sm text-stone-600 font-medium">To cultivate community land through permaculture education, establish sustainable food forests, and equip local communities with market-ready agricultural skills.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-stone-50 border border-stone-100 shadow-sm">
+                            <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white text-lg font-bold mb-3"><i class="fa-solid fa-tree"></i></div>
+                            <h4 class="font-bold text-stone-950 text-base mb-1">Our Vision</h4>
+                            <p class="text-sm text-stone-600 font-medium">A self-reliant future where clean food landscapes, agricultural equity, and sustainable farming methods completely eliminate localized nutritional deficits.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-stone-100">
+                        <h4 class="font-bold text-stone-900 text-sm tracking-wider uppercase mb-3">Our Core Agricultural Principles</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold text-xs">Soil Regenerative Care</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold text-xs">Indigenous Seed Freedom</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold text-xs">Zero Chemical Farming</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold text-xs">Water-Smart Harvesting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-stone-50 rounded-3xl p-6 border border-stone-100 shadow-xl shadow-stone-200/50 relative overflow-hidden">
+                        <div class="aspect-w-3 aspect-h-4 rounded-2xl overflow-hidden mb-6 bg-stone-200 shadow-inner">
+                            <img src="20260520_105629.jpg" alt="Sama Gardens Farm Site Field Operations" class="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-500">
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="text-xl font-black text-stone-950">Farm Leadership</h3>
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">Project Director & Head Grower</span>
+                            </div>
+                            <p class="text-sm text-slate-600 font-medium leading-relaxed pt-2">
+                                "Sama Gardens transforms underutilized land into abundant food landscapes. Our model relies on transparent field training and community teamwork to ensure that every volunteer seed planted results in real, edible nourishment for the kitchens of local families."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-24 bg-stone-50 border-y border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest block mb-2">Our Field Operations</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">Practical Agricultural Projects</h2>
+                <p class="text-stone-600 font-medium mt-3">We tackle food scarcity step-by-step through organized farm plots and hands-on community workshops.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-lg flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 bg-stone-200 relative overflow-hidden">
+                            <img src="IMG_1974.jpg" alt="Agricultural Training Session" class="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">Education</div>
+                        </div>
+                        <div class="p-8 space-y-6">
+                            <h3 class="text-2xl font-black text-stone-950">Permaculture Training & Agro-Ecology</h3>
+                            <div class="space-y-3.5 text-sm font-medium">
+                                <div>
+                                    <span class="block text-xs font-bold text-red-700 uppercase tracking-wider mb-0.5">The Challenge</span>
+                                    <p class="text-stone-600 leading-relaxed">Industrial chemical fertilizers drain local topsoil nutrients, leading to poor seasonal harvests and heavy financial debt for farmers.</p>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-emerald-700 uppercase tracking-wider mb-0.5">The Solution</span>
+                                    <p class="text-stone-600 leading-relaxed">Teaching composting, natural companion planting, and organic pest control methods to regenerate small-scale family farm plots.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-2 flex items-center justify-between border-t border-stone-50 mt-auto bg-stone-50/50">
+                        <div>
+                            <span class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest">Core Focus</span>
+                            <span class="text-sm font-extrabold text-stone-950">Organic Methods Training</span>
+                        </div>
+                        <button onclick="openVolunteerModal()" class="cursor-pointer inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors uppercase tracking-wider">
+                            Join Plots <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-lg flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 bg-stone-200 relative overflow-hidden">
+                            <img src="IMG_2047.jpg" alt="Volunteers in the Garden Fields" class="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">Eco-Service</div>
+                        </div>
+                        <div class="p-8 space-y-6">
+                            <h3 class="text-2xl font-black text-stone-950">Global Seed Sharing & Soil Exchange</h3>
+                            <div class="space-y-3.5 text-sm font-medium">
+                                <div>
+                                    <span class="block text-xs font-bold text-red-700 uppercase tracking-wider mb-0.5">The Challenge</span>
+                                    <p class="text-stone-600 leading-relaxed">Community gardens lack the physical manpower to clear heavy overgrowth, set up complex irrigation pipes, and rapidly scale crop production.</p>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-emerald-700 uppercase tracking-wider mb-0.5">The Solution</span>
+                                    <p class="text-stone-600 leading-relaxed">Welcoming enthusiastic international volunteers via Worldpackers to work side-by-side with local farmers on planting schedules.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-2 flex items-center justify-between border-t border-stone-50 mt-auto bg-stone-50/50">
+                        <div>
+                            <span class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest">Core Focus</span>
+                            <span class="text-sm font-extrabold text-stone-950">Hands-on Crop Support</span>
+                        </div>
+                        <button onclick="openVolunteerModal()" class="cursor-pointer inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors uppercase tracking-wider">
+                            Join Plots <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-lg flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 bg-stone-200 relative overflow-hidden">
+                            <img src="IMG-20251208-WA0181.jpg" alt="Women harvesting vegetables" class="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">Empowerment</div>
+                        </div>
+                        <div class="p-8 space-y-6">
+                            <h3 class="text-2xl font-black text-stone-950">Women's Market Garden Co-operatives</h3>
+                            <div class="space-y-3.5 text-sm font-medium">
+                                <div>
+                                    <span class="block text-xs font-bold text-red-700 uppercase tracking-wider mb-0.5">The Challenge</span>
+                                    <p class="text-stone-600 leading-relaxed">Local women often lack safe micro-plots of land and market transport routes to turn their excess backyard harvests into a steady income.</p>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-emerald-700 uppercase tracking-wider mb-0.5">The Solution</span>
+                                    <p class="text-stone-600 leading-relaxed">Providing secure shared greenhouses, high-yield vegetable seed varieties, and organized community market spaces.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-2 flex items-center justify-between border-t border-stone-50 mt-auto bg-stone-50/50">
+                        <div>
+                            <span class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest">Core Focus</span>
+                            <span class="text-sm font-extrabold text-stone-950">Local Market Access</span>
+                        </div>
+                        <button onclick="openVolunteerModal()" class="cursor-pointer inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors uppercase tracking-wider">
+                            Join Plots <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-lg flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 bg-stone-200 relative overflow-hidden">
+                            <img src="IMG_20260111_143605_038.jpg" alt="Community food forest produce" class="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">Nutrition</div>
+                        </div>
+                        <div class="p-8 space-y-6">
+                            <h3 class="text-2xl font-black text-stone-950">School & Home Kitchen Food Forests</h3>
+                            <div class="space-y-3.5 text-sm font-medium">
+                                <div>
+                                    <span class="block text-xs font-bold text-red-700 uppercase tracking-wider mb-0.5">The Challenge</span>
+                                    <p class="text-stone-600 leading-relaxed">School children and elderly households frequently experience nutritional gaps due to a lack of direct access to fresh, leafy green vegetables.</p>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-emerald-700 uppercase tracking-wider mb-0.5">The Solution</span>
+                                    <p class="text-stone-600 leading-relaxed">Setting up high-density vertical vegetable bags and herbal garden borders directly within school compounds and family backyards.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-2 flex items-center justify-between border-t border-stone-50 mt-auto bg-stone-50/50">
+                        <div>
+                            <span class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest">Core Focus</span>
+                            <span class="text-sm font-extrabold text-stone-950">Nutrient-Dense Crops</span>
+                        </div>
+                        <button onclick="openVolunteerModal()" class="cursor-pointer inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors uppercase tracking-wider">
+                            Join Plots <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="volunteer" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                <div class="lg:col-span-7 space-y-12">
+                    <div>
+                        <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest block mb-2">Farm Living & Logistics</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">Work the Land & Experience Real Eco-Farming Culture</h2>
+                        <p class="text-stone-600 font-medium mt-3 leading-relaxed">
+                            We pride ourselves on providing clear, straightforward information regarding on-site accommodation, farm routines, and local living logistics for all our independent eco-volunteers.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl border border-stone-100 bg-stone-50 space-y-4">
+                        <h3 class="text-lg font-black text-stone-950 flex items-center gap-2">
+                            <i class="fa-solid fa-campground text-emerald-600 text-base"></i> Green Farm Amenities
+                        </h3>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium text-stone-600">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Secure shared volunteer farmhouse rooms</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 3 fresh meals prepared daily with farm produce</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Reliable local Wi-Fi data zones</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Eco-friendly charging setups</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h3 class="text-lg font-black text-stone-950 flex items-center gap-2">
+                            <i class="fa-solid fa-sun text-emerald-600 text-base"></i> A Day in the Dirt (Our Routine)
+                        </h3>
+                        <div class="border-l-2 border-stone-100 pl-6 space-y-6 ml-3 relative">
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-3 h-3 bg-emerald-600 rounded-full ring-4 ring-white"></div>
+                                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">Morning Shift</span>
+                                <h4 class="font-extrabold text-stone-900 text-base mt-1">Cool Hour Soil Care & Seeding</h4>
+                                <p class="text-sm text-stone-600 font-medium mt-1">Watering active nursery beds, preparing soil compost mixtures, and transplanting fresh organic seedlings before the midday sun peaks.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-3 h-3 bg-emerald-600 rounded-full ring-4 ring-white"></div>
+                                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">Mid-Day</span>
+                                <h4 class="font-extrabold text-stone-900 text-base mt-1">Farm Kitchen Lunch & Sorting</h4>
+                                <p class="text-sm text-stone-600 font-medium mt-1">Gathering to prepare lunch using freshly picked ingredients, followed by sorting and packing seeds in the shade.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-3 h-3 bg-emerald-600 rounded-full ring-4 ring-white"></div>
+                                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">Afternoon Shift</span>
+                                <h4 class="font-extrabold text-stone-900 text-base mt-1">Community Garden Outreach</h4>
+                                <p class="text-sm text-stone-600 font-medium mt-1">Visiting neighboring women's micro-plots or local primary schools to help maintain vertical vegetable gardens and set up water filters.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-stone-900 text-white rounded-3xl p-8 border border-stone-800 shadow-2xl sticky top-24">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Honest Farm Funding</span>
+                            <h3 class="text-2xl font-black mt-1">Transparent Placement Expense Setup</h3>
+                        </div>
+                        <p class="text-sm text-stone-300 font-medium leading-relaxed">
+                            Sama Gardens is run entirely by local growers. We maintain a non-profit expense system where volunteer contributions go directly toward organic seeds, water pipes, composting materials, and farmhouse cooking.
+                        </p>
+                        
+                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1">
+                            <span class="text-xs text-stone-400 font-bold uppercase tracking-wider">All-Inclusive Sustainable Living</span>
+                            <div class="text-3xl font-black text-emerald-400">Affordable Field Costs</div>
+                            <span class="text-[11px] text-stone-400 block font-medium">Covers secure farmhouse lodging, three freshly sourced meals daily, and continuous field guidance.</span>
+                        </div>
+
+                        <div class="pt-4 space-y-3">
+                            <button onclick="openVolunteerModal()" class="cursor-pointer w-full text-center bg-emerald-500 hover:bg-emerald-600 text-stone-950 font-black py-4 rounded-xl text-sm uppercase tracking-wider shadow-lg transition-all">
+                                Apply For a Garden Slot
+                            </button>
+                            <span class="block text-[11px] text-center text-stone-400 font-medium">No initial booking fees required. Processing and review within 48 hours.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="impact" class="py-24 bg-stone-50 border-t border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest block mb-2">Real Ground Harvests</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">Our Direct Agricultural Footprint</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-stone-100 shadow-xl overflow-hidden max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 items-center">
+                <div class="lg:col-span-5 h-full min-h-[350px] bg-stone-200 relative">
+                    <img src="IMG-20251208-WA0181.jpg" alt="Mary's Market Crop Production" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="lg:col-span-7 p-8 sm:p-12 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">Harvest Case Study</span>
+                        <span class="text-xs font-bold text-stone-400"><i class="fa-solid fa-leaf"></i> Verified Farm Records</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-stone-950">Mary’s Transition to Sustainable Market Gardening</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="space-y-1">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-red-700 block">1. The Plot Deficit</span>
+                            <p class="text-xs text-stone-600 font-medium leading-relaxed">Struggled with degraded, dry backyard soil that failed to grow stable vegetable yields during long dry spells.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-emerald-700 block">2. Garden Training</span>
+                            <p class="text-xs text-stone-600 font-medium leading-relaxed">Learned water-retaining soil mulching techniques, organic composting, and received hardy heirloom crop seeds.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-green-700 block">3. Sustainable Yield</span>
+                            <p class="text-xs text-stone-600 font-medium leading-relaxed">Now harvests diverse leafy greens weekly, successfully feeding her children and selling excess to local markets.</p>
+                        </div>
+                    </div>
+
+                    <blockquote class="border-l-4 border-emerald-500 pl-4 py-1 text-sm font-medium italic text-stone-700 bg-stone-50 rounded-r-lg pr-2">
+                        "Learning how to restore my soil and save my own crop seeds completely altered my household's access to healthy food."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-white border-t border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-12">
+                <div>
+                    <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest block mb-2">Our Fields</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">Authentic Real-World Farm Gallery</h2>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider">
+                    <button class="px-4 py-2 rounded-lg bg-emerald-600 text-white shadow-sm">All Plots</button>
+                    <button class="px-4 py-2 rounded-lg bg-stone-50 border border-stone-100 text-stone-600 hover:bg-stone-100">Crops</button>
+                    <button class="px-4 py-2 rounded-lg bg-stone-50 border border-stone-100 text-stone-600 hover:bg-stone-100">Training</button>
+                    <button class="px-4 py-2 rounded-lg bg-stone-50 border border-stone-100 text-stone-600 hover:bg-stone-100">Volunteers</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group rounded-2xl overflow-hidden border border-stone-100 bg-stone-50 shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden bg-stone-200">
+                        <img src="20260520_105940.jpg" alt="Local farming community gathering" class="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-4"><p class="text-xs font-bold text-stone-700">Community farm hands monitoring experimental high-density soil beds.</p></div>
+                </div>
+                <div class="group rounded-2xl overflow-hidden border border-stone-100 bg-stone-50 shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden bg-stone-200">
+                        <img src="IMG_2674.jpg" alt="Organic garden plant varieties" class="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-4"><p class="text-xs font-bold text-stone-700">Practical agro-ecology classes demonstrating heirloom plant cultivation.</p></div>
+                </div>
+                <div class="group rounded-2xl overflow-hidden border border-stone-100 bg-stone-50 shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden bg-stone-200">
+                        <img src="IMG_1874.jpg" alt="Volunteers working soil plots" class="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-4"><p class="text-xs font-bold text-stone-700">Cross-cultural farming days, building community water irrigation ridges.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-emerald-400 font-extrabold text-xs uppercase tracking-widest block mb-2">Get in Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-black tracking-tight">Connect With Our Gardening Network</h2>
+                        <p class="text-sm text-stone-400 font-medium mt-3 leading-relaxed">
+                            Have questions regarding upcoming planting seasons, greenhouse space availability, seed donation packets, or volunteer logistics? Let's connect.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 text-sm font-semibold">
+                        <a href="https://wa.me/254727567233" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+                            <div class="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center text-white text-base"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <span class="block text-[10px] text-stone-400 uppercase tracking-wider">Instant Chat Updates</span>
+                                <span class="text-white group-hover:text-emerald-400 transition-colors">WhatsApp Farm Coordination</span>
+                            </div>
+                        </a>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white text-base"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <span class="block text-[10px] text-stone-400 uppercase tracking-wider">Formal Inquiries</span>
+                                <span class="text-white">info@samagardens.org</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white text-stone-900 rounded-3xl p-8 shadow-2xl space-y-6">
+                    <h3 class="text-xl font-black text-stone-950 border-b border-stone-100 pb-4">Send a Field Message</h3>
+                    <form onsubmit="event.preventDefault(); alert('Message successfully sent to the farm management team.');" class="space-y-4 text-sm font-medium">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-stone-700 block">Your Name</label>
+                                <input type="text" required class="w-full rounded-xl border border-stone-200 px-4 py-3 focus:outline-none focus:border-emerald-500" placeholder="Grower / Volunteer">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-stone-700 block">Email Address</label>
+                                <input type="email" required class="w-full rounded-xl border border-stone-200 px-4 py-3 focus:outline-none focus:border-emerald-500" placeholder="name@domain.com">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-stone-700 block">Country of Origin</label>
+                            <input type="text" required class="w-full rounded-xl border border-stone-200 px-4 py-3 focus:outline-none focus:border-emerald-500" placeholder="Kenya / Germany / United Kingdom">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-stone-700 block">Farming/Volunteer Questions</label>
+                            <textarea required rows="4" class="w-full rounded-xl border border-stone-200 px-4 py-3 focus:outline-none focus:border-emerald-500" placeholder="Tell us about your background or ask about our farming methods..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white font-black py-4 rounded-xl text-xs uppercase tracking-wider shadow-md transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-950 text-stone-500 text-xs py-12 border-t border-stone-900 font-medium">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-stone-900 pb-8">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="flex flex-col">
+                        <span class="font-black text-stone-200 tracking-tight text-sm uppercase">Sama Gardens</span>
+                        <span class="text-[10px] text-emerald-500 font-bold uppercase tracking-widest">Grow. Seed. Empower.</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-6 text-stone-400 font-bold uppercase tracking-wider">
+                    <a href="#about" class="hover:text-emerald-500">Our roots</a>
+                    <a href="#programs" class="hover:text-emerald-500">Crop Auditing</a>
+                    <a href="#volunteer" class="hover:text-emerald-500">Farm Safety</a>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+                <p>&copy; 2026 Sama Gardens. Sustainable community permaculture network.</p>
+                <p class="text-[11px] text-stone-400">Registered Agriculture NGO Framework Asset</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="volunteer-modal" class="modal fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none p-4">
+        <div class="bg-white rounded-3xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative text-sm text-stone-800 font-medium space-y-6">
+            <button onclick="closeVolunteerModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-600 text-xl focus:outline-none cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div>
+                <span class="text-[10px] font-black uppercase tracking-widest text-emerald-600 block">Join Our Fields</span>
+                <h3 class="text-2xl font-black text-stone-950 tracking-tight mt-0.5">Farm Volunteer Application</h3>
+                <p class="text-xs text-stone-500 font-medium mt-1">Let us know your skills so we can prepare your gardening project duties.</p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Application saved to our farm registry.'); closeVolunteerModal();" class="space-y-4">
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-stone-700 block">Full Name *</label>
+                    <input type="text" required class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500" placeholder="Jane Doe">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-700 block">Email Address *</label>
+                        <input type="email" required class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500" placeholder="jane@example.com">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-700 block">WhatsApp Number *</label>
+                        <input type="text" required class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500" placeholder="+254 727 567 233">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-700 block">Country of Residence *</label>
+                        <input type="text" required class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500" placeholder="Germany">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-700 block">Primary Farm Interest *</label>
+                        <select class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500 bg-white">
+                            <option>Permaculture & Soil Design</option>
+                            <option>Greenhouse Vegetable Gardening</option>
+                            <option>School Food Forest Frameworks</option>
+                            <option>General Farm Support Husbandry</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-stone-700 block">Planned Arrival Window (e.g., September 2026, 4 Weeks) *</label>
+                    <input type="text" required class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500" placeholder="October 2026 - 4 Weeks Plot Time">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-stone-700 block">Any previous farming or gardening experience?</label>
+                    <textarea rows="3" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 focus:outline-none focus:border-emerald-500" placeholder="Backyard gardening, organic weeding, permaculture knowledge, or just eager to learn..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md mt-2">
+                    Submit Farm Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="donate-modal" class="modal fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none p-4">
+        <div class="bg-white rounded-3xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative text-sm text-stone-800 font-medium space-y-6">
+            <button onclick="closeDonateModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-600 text-xl focus:outline-none cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="flex justify-between items-start gap-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-emerald-600 block">Sponsor a Plot</span>
+                    <h3 class="text-2xl font-black text-stone-950 tracking-tight mt-0.5">Agricultural Resource Allocation</h3>
+                </div>
+                <div class="bg-stone-100 p-1 rounded-xl flex gap-1 text-xs font-bold select-none">
+                    <button id="curr-kes" onclick="setCurrency('KES')" class="px-3 py-1.5 rounded-lg bg-white text-stone-950 shadow-sm transition-all">KES</button>
+                    <button id="curr-usd" onclick="setCurrency('USD')" class="px-3 py-1.5 rounded-lg text-stone-500 transition-all">USD</button>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <label class="text-xs font-bold text-stone-700 block">Select Farm Impact Tier</label>
+                
+                <div id="tier-1" onclick="selectTier(1, 500, 5)" class="p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/30 cursor-pointer transition-all flex justify-between items-center gap-4">
+                    <div class="space-y-0.5">
+                        <span class="font-extrabold text-stone-950 text-base tier-amt" data-kes="500" data-usd="5">KES 500</span>
+                        <p class="text-xs text-stone-600 leading-relaxed">Sponsors organic crop seed packets (kale, spinach, tomatoes) for a backyard starter patch.</p>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border-4 border-emerald-500 flex-shrink-0 bg-white"></div>
+                </div>
+
+                <div id="tier-2" onclick="selectTier(2, 2000, 15)" class="p-4 rounded-2xl border border-stone-200 hover:border-stone-300 cursor-pointer transition-all flex justify-between items-center gap-4">
+                    <div class="space-y-0.5">
+                        <span class="font-extrabold text-stone-950 text-base tier-amt" data-kes="2,000" data-usd="15">KES 2,000</span>
+                        <p class="text-xs text-stone-600 leading-relaxed">Funds high-quality agricultural tools (hand hoes, watering cans, organic soil compost composters).</p>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border border-stone-300 flex-shrink-0 bg-white"></div>
+                </div>
+
+                <div id="tier-3" onclick="selectTier(3, 10000, 75)" class="p-4 rounded-2xl border border-stone-200 hover:border-stone-300 cursor-pointer transition-all flex justify-between items-center gap-4">
+                    <div class="space-y-0.5">
+                        <span class="font-extrabold text-stone-950 text-base tier-amt" data-kes="10,000" data-usd="75">KES 10,000</span>
+                        <p class="text-xs text-stone-600 leading-relaxed">Provides micro-irrigation pipe kits, rain barrels, or vertical greenhouse mesh configurations for community group spaces.</p>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border border-stone-300 flex-shrink-0 bg-white"></div>
+                </div>
+            </div>
+
+            <div class="space-y-2.5 pt-2 border-t border-stone-100">
+                <span class="text-xs font-bold text-stone-700 block">Select Farm Gateway Checkout</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="alert('M-Pesa farming protocol trace initiated for: ' + currentSelectedValue + ' ' + activeCurrency);" class="w-full py-3 px-4 rounded-xl font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 cursor-pointer text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-phone"></i> Pay via M-Pesa Mobile
+                    </button>
+                    <button onclick="alert('Card clearing trace initiated for: ' + currentSelectedValue + ' ' + activeCurrency);" class="w-full py-3 px-4 rounded-xl font-bold text-white bg-stone-950 hover:bg-stone-900 transition-colors flex items-center justify-center gap-2 cursor-pointer text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-credit-card"></i> Pay Credit Card / PayPal
+                    </button>
+                </div>
+                <div class="bg-stone-50 rounded-xl p-3 border border-stone-100 text-center text-[10px] text-stone-400 font-medium">
+                    <i class="fa-solid fa-lock text-emerald-600"></i> Contributions tracked and checked directly under micro-farming project supply logs.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/254727567233" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all group" title="Chat instantly with our farm coordinators">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute right-16 bg-stone-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity shadow-md">Chat Farm Director</span>
+    </a>
+
+    <script>
+        // Menu Interactions
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Modal Controls
+        const volunteerModal = document.getElementById('volunteer-modal');
+        const donateModal = document.getElementById('donate-modal');
+
+        function openVolunteerModal() {
+            volunteerModal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+        function closeVolunteerModal() {
+            volunteerModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+        function openDonateModal() {
+            donateModal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+        function closeDonateModal() {
+            donateModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === volunteerModal) closeVolunteerModal();
+            if (e.target === donateModal) closeDonateModal();
+        });
+
+        // Donation Engine Config
+        let activeCurrency = 'KES';
+        let currentSelectedValue = 500; 
+
+        function setCurrency(target) {
+            if (activeCurrency === target) return;
+            activeCurrency = target;
+
+            document.getElementById('curr-kes').className = target === 'KES' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-950 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-500 transition-all';
+            document.getElementById('curr-usd').className = target === 'USD' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-950 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-500 transition-all';
+
+            const targetElements = document.querySelectorAll('.tier-amt');
+            targetElements.forEach(el => {
+                const kesVal = el.getAttribute('data-kes');
+                const usdVal = el.getAttribute('data-usd');
+                el.innerText = target === 'KES' ? 'KES ' + kesVal : '$' + usdVal;
+            });
+
+            const currentActiveCard = document.querySelector('.border-emerald-500');
+            if (currentActiveCard) {
+                currentSelectedValue = activeCurrency === 'KES' ? currentActiveCard.getAttribute('data-kes-raw') : currentActiveCard.getAttribute('data-usd-raw');
+            }
+        }
+
+        function selectTier(index, kesRaw, usdRaw) {
+            currentSelectedValue = activeCurrency === 'KES' ? kesRaw : usdRaw;
+            
+            [1, 2, 3].forEach(id => {
+                const card = document.getElementById('tier-' + id);
+                const indicator = card.querySelector('.w-5.h-5');
+                if (id === index) {
+                    card.className = "p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/30 cursor-pointer transition-all flex justify-between items-center gap-4";
+                    card.setAttribute('data-kes-raw', kesRaw);
+                    card.setAttribute('data-usd-raw', usdRaw);
+                    indicator.className = "w-5 h-5 rounded-full border-4 border-emerald-500 flex-shrink-0 bg-white";
+                } else {
+                    card.className = "p-4 rounded-2xl border border-stone-200 hover:border-stone-300 cursor-pointer transition-all flex justify-between items-center gap-4";
+                    indicator.className = "w-5 h-5 rounded-full border border-stone-300 flex-shrink-0 bg-white";
+                }
+            });
+        }
+        
+        document.getElementById('tier-1').setAttribute('data-kes-raw', 500);
+        document.getElementById('tier-1').setAttribute('data-usd-raw', 5);
+        document.getElementById('tier-2').setAttribute('data-kes-raw', 2000);
+        document.getElementById('tier-2').setAttribute('data-usd-raw', 15);
+        document.getElementById('tier-3').setAttribute('data-kes-raw', 10000);
+        document.getElementById('tier-3').setAttribute('data-usd-raw', 75);
+    </script>
+</body>
+</html>
